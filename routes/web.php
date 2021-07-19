@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\PagesControllers;
-namespace App\Http\Controllers\HomeController;
-
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LandingController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,14 +17,17 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', 'PagesController@index');
-
-Route::get('/favourite', 'PagesController@favourite');
-
-Route::get('/contact', 'PagesController@contact');
 
 
 
 Auth::routes();
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+
+Route::get('/', [LandingController::class, 'index'])->name('/');
+Route::get('/addfavourite/{id}', [HomeController::class, 'addfavourite'])->name('addfavourite');
+Route::get('/favourite', [HomeController::class, 'favourite'])->name('favourite');
+Route::get('/removefavourite/{id}', [HomeController::class, 'removefavourite'])->name('removefavourite');
+Route::get('/contact', function () {
+    return view('pages.contact');
+});
 ?>

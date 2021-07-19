@@ -11,13 +11,6 @@
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="item">
-                            <i class="fa fa-map"></i>
-                            <h3>Ou:</h3>
-                            <p>Johannesburg, Sandton, Paulshof</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="item">
                             <i class=" fa fa-phone"></i>
                             <h3>Contact Number:</h3>
                             <p>+27 67 232 0947</p>

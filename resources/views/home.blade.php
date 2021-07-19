@@ -3,26 +3,43 @@
 @section('content')
 
 <div class="movie_card" id="bright">
-    <div class="info_section">
+ 
+ @foreach($popularMovies as $key $movie)
+     
+     <div class="info_section">
       <div class="movie_header">
-        <img class="locandina" src="https://movieplayer.net-cdn.it/t/images/2017/12/20/bright_jpg_191x283_crop_q85.jpg"/>
-        <h1>Bright</h1>
-        <h4>2017, David Ayer</h4>
-        <span class="minutes">117 min</span>
-        <p class="type">Action, Crime, Fantasy</p>
+        <img class="locandina" src="{{'https://image.tmdb.org/t/p/w500/'.$movie['poster_path']}}" alt="poster"/>
+        <h1> {{ $movie->title }}</h1>
+        <h4>{{ \Carbon::parse($movie->release_date)->format{'M D, Y'} }}</h4>
+        <p class="type">{{ $movie->genre_id }}</p>
       </div>
       <div class="movie_desc">
         <p class="text">
-          Set in a world where fantasy creatures live side by side with humans. A human cop is forced to work with an Orc to find a weapon everyone is prepared to kill for.
+          {{ $movie->overview}}
         </p>
       </div>
+      @if(Auth::user())
+            @if(Auth::user()->movies->contains('movie_id',$movie->id) == 1)
       <div class="movie_social">
         <ul>
-          <li><i class="material-icons">Add to favourite</i></li>
+          <li><i class="material-icons" href="/favourite">****Favourite*****</i></li>
         </ul>
       </div>
+        @else
+    <div class="blur_back bright_back">
+    <ul>
+      <li><i class="material-icons" href="/addfavourite/{{ $movie->id }}">Add to favourite</i></li>
+    </ul>
     </div>
-    <div class="blur_back bright_back"></div>
+    @endif
+        @else
+    <div class="blur_back bright_back">
+    <ul>
+      <li><i class="material-icons" href="/addfavourite/{{ $movie->id }}">Add to favourite</i></li>
+    </ul>
+    </div>
+       @endif
+    @endforeach
   </div>
 
 

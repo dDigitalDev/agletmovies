@@ -43,6 +43,11 @@ class User extends Authenticatable
     ];
 
     public $timestamps = false;
-    protected $primaryKey = 'userId';
+    protected $primaryKey = 'id';
+
+    public function movies()
+    {
+        return $this->hasMany('\App\Models\UserMovies');
+    }
 
 }

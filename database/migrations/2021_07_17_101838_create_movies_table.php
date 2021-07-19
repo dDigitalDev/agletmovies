@@ -14,10 +14,14 @@ class CreateMoviesTable extends Migration
     public function up()
     {
         Schema::create('movies', function (Blueprint $table) {
-            $table->increments('movieId');
+            $table->id();
             $table->string('title');
+            $table->string('description')->nullable();
+            $table->string('trailer')->nullable();
             $table->string('poster');
-            $table->date('releasedate');
+            $table->timestamp('release_date');
+            $table->unsignedBigInteger('genre_id');
+            $table->foreign('genre_id')->references('id')->on('genres');
         });
     }
 
