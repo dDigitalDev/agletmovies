@@ -28,13 +28,13 @@
             <hr>
               <div class="row">
                 <div class="col-sm-8">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14340.478967757937!2d28.036931622233272!3d-26.029637854986785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e9573de19f2fb85%3A0xb57cfe1cfc3dad6!2sPaulshof%2C%20Sandton%2C%202191!5e0!3m2!1sen!2sza!4v1626629720724!5m2!1sen!2sza" width="700" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14340.478967757937!2d28.036931622233272!3d-26.029637854986785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e9573de19f2fb85%3A0xb57cfe1cfc3dad6!2sPaulshof%2C%20Sandton%2C%202191!5e0!3m2!1sen!2sza!4v1626629720724!5m2!1sen!2sza" width="600" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
 
                 <div class="col-sm-4" id="contact2">
-                    <h3>Full Name:</h3>
+                    <h3></h3>
                     <hr align="left" width="50%">
-                    <h4 class="pt-2">Mpendulo Charles Nkuna</h4>
+                    <h4 class="pt-2">Mpendulo Nkuna</h4>
                   </div>
               </div>
             </div>
