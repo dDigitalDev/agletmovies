@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class LandingController extends Controller
 {
-    
+
        /**
      * Create a new controller instance.
      *
@@ -41,6 +41,6 @@ class LandingController extends Controller
                 $data = json_decode($body);
                 print_r($data);exit();
 
-                return view('home');
+                return view('/');
     }
 }
