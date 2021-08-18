@@ -2,45 +2,38 @@
 
 @section('content')
 
-<div class="movie_card" id="bright">
- 
- @foreach($popularMovies as $key $movie)
-     
-     <div class="info_section">
-      <div class="movie_header">
-        <img class="locandina" src="{{'https://image.tmdb.org/t/p/w500/'.$movie['poster_path']}}" alt="poster"/>
-        <h1> {{ $movie->title }}</h1>
-        <h4>{{ \Carbon::parse($movie->release_date)->format{'M D, Y'} }}</h4>
-        <p class="type">{{ $movie->genre_id }}</p>
-      </div>
+
+
+    @foreach ($popularMovies as $Movie)
+    <div class="movie_card" id="bright">
+        <div class="info_section">
+
+        <div class="movie_header">
+            <a href="#"> <img  src="{{ 'https://image.tmdb.org/t/p/w120/'.$Movie['poster_path'] }}" class="locandina"></a>
+            <a href="#"> <img  src="{{ 'https://image.tmdb.org/t/p/w120/'.$Movie['backdrop_path'] }}" alt="poster" class="bright_back"></a>
+           <h1>{{$Movie['title']}}</h1>
+           <h4>{{$Movie['release_date']}}</h4>
+           <span class="minutes">{{$Movie['vote_count']}}</span>
+           <p class="type">Action, Crime, Fantasy</p>
+        </div>
+
       <div class="movie_desc">
         <p class="text">
-          {{ $movie->overview}}
+          {{$Movie['overview']}}
         </p>
       </div>
-      @if(Auth::user())
-            @if(Auth::user()->movies->contains('movie_id',$movie->id) == 1)
+
       <div class="movie_social">
         <ul>
-          <li><i class="material-icons" href="/favourite">****Favourite*****</i></li>
+          <li><i class="material-icons"></i></li>
+          <li><i class="material-icons"><button type="button" class="btn btn-success">Add to Fav</button></i></li>
         </ul>
       </div>
-        @else
-    <div class="blur_back bright_back">
-    <ul>
-      <li><i class="material-icons" href="/addfavourite/{{ $movie->id }}">Add to favourite</i></li>
-    </ul>
+
     </div>
-    @endif
-        @else
-    <div class="blur_back bright_back">
-    <ul>
-      <li><i class="material-icons" href="/addfavourite/{{ $movie->id }}">Add to favourite</i></li>
-    </ul>
-    </div>
-       @endif
-    @endforeach
+    <div class="blur_back bright_back"></div>
   </div>
+    @endforeach
 
 
 @endsection

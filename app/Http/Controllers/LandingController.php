@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 
 class LandingController extends Controller
@@ -26,21 +27,15 @@ class LandingController extends Controller
      */
     public function index()
     {
-        $client = new \GuzzleHttp\Client();
-        $response = $client->Request(
-            'GET',
-            'https://api.themoviedb.org/3/movie/popular?',
-            [
-                'query' => [
-                    'api_key' => '17b7dc81a821db76a65ce303cd3561d4',
-                    'language' => 'en-us'
-                ]
-            ]
-                );
-                $body = $response->getBody();
-                $data = json_decode($body);
-                print_r($data);exit();
+       $popularMovies = Http::withToken(config('services.tmdb.token'))
+       ->get ('https://api.themoviedb.org/3/movie/popular')
+       ->json('results');
 
-                return view('/');
+       dump($popularMovies);
+
+       return view('home',[
+           'popularMovies' => $popularMovies,
+
+       ]);
     }
 }
