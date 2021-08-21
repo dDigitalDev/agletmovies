@@ -10140,7 +10140,7 @@ html, body {
 
   .blur_back {
     width: 100%;
-    background-position: 50% 50% !important;
+    background-position: 70% 70% !important;
   }
 
   .movie_header {
@@ -10164,19 +10164,11 @@ html, body {
   box-shadow: 0px 0px 120px -55px rgba(255, 51, 0, 0.5);
 }
 
-.bright_back {
-  background: url("");
-}
-
 #tomb {
   box-shadow: 0px 0px 150px -45px rgba(19, 160, 134, 0.6);
 }
 #tomb:hover {
   box-shadow: 0px 0px 120px -55px rgba(19, 160, 134, 0.6);
-}
-
-.tomb_back {
-  background: url("");
 }
 
 #ave {
@@ -10185,10 +10177,6 @@ html, body {
 }
 #ave:hover {
   box-shadow: 0px 0px 120px -55px rgba(199, 147, 75, 0.7);
-}
-
-.ave_back {
-  background: url("");
 }
 
 hr {

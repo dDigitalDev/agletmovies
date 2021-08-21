@@ -3,30 +3,35 @@
 
 @section('content')
 
-   <div class="movie_card" id="bright">
+@foreach ($popularMovies as $Movie)
+<div class="movie_card" id="bright">
     <div class="info_section">
-        @foreach($popularMovies as $key => $movie)
 
-      <div class="movie_header">
-        <img class="locandina" src="{{'https://image.tmdb.org/t/p/w500/'.$movie['poster_path']}}" alt="poster"/>
-        <h1> {{ $movie->title }}</h1>
-        <h4>{{ \Carbon::parse($movie->release_date)->format{'M D, Y'} }}</h4>
-        <p class="type">{{ $movie->genre_ids }}</p>
-      </div>
+    <div class="movie_header">
+        <a href="#"> <img  src="{{ 'https://image.tmdb.org/t/p/w500/'.$Movie['poster_path'] }}" class="locandina"></a>
 
-      <div class="movie_desc">
-        <p class="text">
-          {{ $movie->overview }}
-        </p>
-      </div>
-
-    <div class="blur_back bright_back">
-    <ul>
-      <li><i class="material-icons" href="/removefavourite/{{ $movie->usermovies_id }}">Remove from favourite</i></li>
-    </ul>
+       <h1>{{$Movie['title']}}</h1>
+       <h4>{{$Movie['release_date']}}</h4>
+       <span class="minutes">{{$Movie['vote_count']}}</span>
+       <p class="type">Action, Crime, Fantasy</p>
     </div>
-    @endforeach
+
+  <div class="movie_desc">
+    <p class="text">
+      {{$Movie['overview']}}
+    </p>
   </div>
-   
+
+  <div class="movie_social">
+    <ul>
+      <li><i class="material-icons"></i></li>
+      <li><i class="material-icons"><button type="button" class="btn btn-success">Remove</button></i></li>
+    </ul>
+  </div>
+
+</div>
+<div class="blur_back bright_back"><a href="#"> <img  src="{{ 'https://image.tmdb.org/t/p/w500/'.$Movie['backdrop_path'] }}"></a></div>
+</div>
+@endforeach
 
 @endsection

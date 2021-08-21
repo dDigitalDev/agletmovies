@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Movie;
 use App\Models\UserMovies;
+use Illuminate\Support\Facades\Http;
 
 class HomeController extends Controller
 {
@@ -35,34 +36,18 @@ class HomeController extends Controller
         return view('home', ['movies' => $movies]);
     }*/
 
-    public function addfavourite($movie_id)
-    {
-        $user = User::find(auth()->user()->id);
-        $result = $user->movies()->save(new UserMovies(array(
-            'user_id' => $user->id,
-            'movie_id' => $movie_id
-        )));
-        return redirect()->to('/');
-    }
-
     public function favourite()
     {
-        $client = new \GuzzleHttp\Client();
-        $response = $client->Request(
-            'GET',
-            'https://api.themoviedb.org/3/movie/popular?',
-            [
-                'query' => [
-                    'api_key' => '17b7dc81a821db76a65ce303cd3561d4',
-                    'language' => 'en-us'
-                ]
-            ]
-                );
-                $body = $response->getBody();
-                $data = json_decode($body);
-                print_r($data);exit();
+        $popularMovies = Http::withToken(config('services.tmdb.token'))
+       ->get ('https://api.themoviedb.org/3/movie/popular')
+       ->json()['results'];
 
-                return view('pages.favourite');
+       dump($popularMovies);
+
+       return view('pages.favourite',[
+           'popularMovies' => $popularMovies,
+
+       ]);
     }
 
     public function removefavourite($movie_id)
