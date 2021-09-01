@@ -10078,6 +10078,9 @@ html, body {
 .movie_card .info_section .movie_desc .text {
   color: #cfd6e1;
 }
+.movie_card .info_section .checked {
+  color: orange;
+}
 .movie_card .info_section .movie_social {
   height: 10%;
   padding-left: 15px;

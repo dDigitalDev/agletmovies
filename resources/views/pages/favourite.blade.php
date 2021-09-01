@@ -13,7 +13,6 @@
        <h1>{{$Movie['title']}}</h1>
        <h4>{{$Movie['release_date']}}</h4>
        <span class="minutes">{{$Movie['vote_count']}}</span>
-       <p class="type">Action, Crime, Fantasy</p>
     </div>
 
   <div class="movie_desc">
@@ -24,8 +23,7 @@
 
   <div class="movie_social">
     <ul>
-      <li><i class="material-icons"></i></li>
-      <li><i class="material-icons"><button type="button" class="btn btn-success">Remove</button></i></li>
+      <li><i class="material-icons"><button type="button" class="fa fa-star checked"><a href="/removefavourite/{{ $Movie['id'] }}">Remove from list</button></i></li>
     </ul>
   </div>
 

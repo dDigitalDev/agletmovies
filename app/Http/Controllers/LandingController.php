@@ -40,13 +40,5 @@ class LandingController extends Controller
        ]);
     }
 
-    public function addfavourite($movie_id)
-    {
-        $user = User::find(auth()->user()->id);
-        $result = $user->movies()->save(new UserMovies(array(
-            'user_id' => $user->id,
-            'movie_id' => $movie_id
-        )));
-        return redirect()->to('home');
-    }
+
 }

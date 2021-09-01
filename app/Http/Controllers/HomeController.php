@@ -55,4 +55,14 @@ class HomeController extends Controller
         $res=UserMovies::find($movie_id)->delete();
         return redirect()->to('/favourite');
     }
+
+    public function addfavourite($movie_id)
+    {
+        $user = User::find(auth()->user()->id);
+        $results = $user->movies()->save(new UserMovies(array(
+            'user_id' => $user->id,
+            'movie_id' => $movie_id
+        )));
+        return redirect()->to('/favourite');
+    }
 }

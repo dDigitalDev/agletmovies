@@ -22,13 +22,24 @@
           {{$Movie['overview']}}
         </p>
       </div>
-
+      @if(Auth::user())
+      @if(Auth::user()->movies->contains('movie_id',$Movie['id']) == 1)
       <div class="movie_social">
         <ul>
-          <li><i class="material-icons"></i></li>
-          <li><i class="material-icons"><button type="button" class="btn btn-success">Add to Fav</button></i></li>
+
+          <li><i class="material-icons"><button class="fa fa-star checked"></button></i></li>
         </ul>
       </div>
+      @else
+      <div class="material-icons"><button type="button" class="fa fa-star">
+          <a href="/addfavourite/{{ $Movie['id'] }}">Add to Fav</a>
+      </div>
+      @endif
+  @else
+  <div class="material-icons"><button type="button" class="fa fa star">
+      <a href="/addfavourite/{{ $Movie['id'] }}">Add to Fav</a>
+  </div>
+  @endif
 
     </div>
     <div class="blur_back bright_back"><a href="#"> <img  src="{{ 'https://image.tmdb.org/t/p/w500/'.$Movie['backdrop_path'] }}"></a></div>

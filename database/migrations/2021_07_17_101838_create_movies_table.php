@@ -17,11 +17,8 @@ class CreateMoviesTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('description')->nullable();
-            $table->string('trailer')->nullable();
             $table->string('poster');
             $table->timestamp('release_date');
-            $table->unsignedBigInteger('genre_id');
-            $table->foreign('genre_id')->references('id')->on('genres');
         });
     }
 
