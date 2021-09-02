@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 20, 2021 at 07:39 AM
+-- Generation Time: Sep 02, 2021 at 09:26 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -40,17 +40,6 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `genre`
---
-
-CREATE TABLE `genre` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `migrations`
 --
 
@@ -79,10 +68,8 @@ CREATE TABLE `movies` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `trailer` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `poster` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `release_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `genre_id` bigint(20) UNSIGNED NOT NULL
+  `release_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -116,6 +103,20 @@ CREATE TABLE `usermovies` (
   `movie_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `usermovies`
+--
+
+INSERT INTO `usermovies` (`id`, `user_id`, `movie_id`) VALUES
+(1, 2, 436969),
+(2, 2, 379686),
+(3, 2, 573164),
+(4, 2, 385128),
+(5, 2, 729720),
+(6, 2, 617502),
+(7, 2, 619297),
+(9, 2, 825997);
+
 -- --------------------------------------------------------
 
 --
@@ -136,7 +137,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`) VALUES
-(2, 'jointheteam', 'jointheteam@aglet.co.za', NULL, '$2y$10$t6Oxyu1WhR.r.uA7NscbnenjKA9jo9A00dNXyTGRbxfasjNbRQedW', NULL);
+(2, 'jointheteam', 'jointheteam@aglet.co.za', NULL, '$2y$10$t6Oxyu1WhR.r.uA7NscbnenjKA9jo9A00dNXyTGRbxfasjNbRQedW', 'tVuN869SvCf40D4OC3wtxzUeBaLqXqu76ebaerHpayNtYgyw9pjCnUVYSpnv');
 
 --
 -- Indexes for dumped tables
@@ -148,12 +149,6 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
-
---
--- Indexes for table `genre`
---
-ALTER TABLE `genre`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `migrations`
@@ -213,7 +208,7 @@ ALTER TABLE `movies`
 -- AUTO_INCREMENT for table `usermovies`
 --
 ALTER TABLE `usermovies`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `users`
