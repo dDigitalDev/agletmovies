@@ -23,7 +23,28 @@
 127.0.0.1 localhost
 127.0.0.1 agletmovies.build
 
-**Now you can run the project by-> agletmovies.build in the browser ***
+Create database and place the same name at .env file in laravel project folder
+
+open the project folder on vs code
+
+open terminal and run:
+composer install
+php artisan key:generate  
+php artisan cache:clear
+php artisan migrate
+php artisan storage:link
+
+
+
+**Now you can run the project by-> agletmovies.build in the browser make sure apache server is running ***
+
+ If you're getting
+
+Whoops, looks like something went wrong
+
+in app/config/app.php, set debugging as true with:
+
+'debug' => env('APP_DEBUG', true)'
 
 ##Project Approach
 

@@ -42,7 +42,6 @@ class HomeController extends Controller
        ->get ('https://api.themoviedb.org/3/movie/popular')
        ->json()['results'];
 
-       dump($popularMovies);
 
        return view('pages.favourite',[
            'popularMovies' => $popularMovies,
